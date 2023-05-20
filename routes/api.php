@@ -4,6 +4,7 @@ use App\Http\Controllers\ChoferController;
 use App\Http\Controllers\cliente;
 use App\Http\Controllers\PedimentoA1Controller;
 use App\Http\Controllers\PedimentoRTController;
+use App\Http\Controllers\TramiteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/tramites',[TramiteController::class, 'createTramite']);
 Route::get('/pedimentosa1',[PedimentoA1Controller::class,'getPedimentosA1']);
 Route::post('/pedimentosa1',[PedimentoA1Controller::class, 'createPedimentoA1']);
 Route::get('/pedimentosrt',[PedimentoRTController::class,'getPedimentosRT']);
