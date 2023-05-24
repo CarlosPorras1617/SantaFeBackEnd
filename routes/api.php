@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/tramites',[TramiteController::class, 'createTramite']);
+Route::get('/imprimirBarcode',[TramiteController::class, 'imprimirBarcode']);
 Route::get('/pedimentosa1',[PedimentoA1Controller::class,'getPedimentosA1']);
 Route::post('/pedimentosa1',[PedimentoA1Controller::class, 'createPedimentoA1']);
 Route::get('/pedimentosrt',[PedimentoRTController::class,'getPedimentosRT']);
