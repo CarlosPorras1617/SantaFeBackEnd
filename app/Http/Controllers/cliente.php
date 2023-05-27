@@ -18,11 +18,73 @@ class cliente extends Controller
         ],201);
     }
 
+    //get all clients
     public function getClients(){
         $clients = clientes::all();
+        $clients = clientes::paginate(10);
         return response($clients, 200);
     }
 
+    //get only one client
+    public function getClient($id){
+        $client = clientes::find($id);
+        if($client != null){
+            return response($client, 200);
+        }
+        return response('Client not found', 404);
+    }
+
+    //update a client
+    public function updateClient($id, Request $request){
+        $client = clientes::find($id);
+        if (!$client) {
+            return response ([
+                'message' => 'Client not found'
+            ], 404);
+        }
+        $data = $request->validate($this->validateClient());
+        $client->update($data);
+        return response([
+            'message' => 'Client updated'
+        ], 201);
+    }
+
+    //"eliminates" a client
+    public function hideClient($id){
+        $client = clientes::find($id);
+        if (!$client) {
+            return response([
+                'message' => 'Client with ID ' . $id . ' couldnt be found'
+            ], 404);
+        }
+        $client->status = 0;
+        if (!$client->save()) {
+            return response ([
+                'message' => 'Unexpected error'
+            ], 500);
+        }else{
+            return response([
+                'message' => 'Client eliminated'
+            ], 200);
+        }
+
+    }
+
+    //real client elimination
+    public function eliminateClient($id){
+        $client = clientes::find($id);
+        if (!$client) {
+            return response([
+                'message' => 'Client with ID ' . $id . ' couldnt be found'
+            ], 404);
+        }
+        $client->delete();
+        return response([
+            'message' => 'Client eliminated'
+        ]);
+    }
+
+    //client validation
     private function validateClient(){
         return [
             'nombre'=>'required',

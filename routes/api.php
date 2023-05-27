@@ -23,12 +23,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Clients routes
+Route::get('/clientes',[cliente::class,'getClients']);
+Route::get('/cliente/{id}', [cliente::class, 'getClient']);
+Route::put('/cliente/{id}', [cliente::class, 'updateClient']);
+Route::put('/eliminar/{id}', [cliente::class, 'hideClient']);
+Route::delete('/eliminar/{id}', [cliente::class, 'eliminateClient']);
+Route::post('/clientes', [cliente::class, 'createClient']);
+
 Route::post('/tramites',[TramiteController::class, 'createTramite']);
 Route::get('/imprimirBarcode',[TramiteController::class, 'imprimirBarcode']);
 Route::get('/pedimentosa1',[PedimentoA1Controller::class,'getPedimentosA1']);
 Route::post('/pedimentosa1',[PedimentoA1Controller::class, 'createPedimentoA1']);
 Route::get('/pedimentosrt',[PedimentoRTController::class,'getPedimentosRT']);
 Route::post('/pedimentosrt', [PedimentoRTController::class, 'createPedimentoRT']);
-Route::get('/clientes',[cliente::class,'getClients']);
 Route::get('/choferes',[ChoferController::class,'getChofers']);
-Route::post('/clientes', [cliente::class, 'createClient']);
+

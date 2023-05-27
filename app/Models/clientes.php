@@ -10,7 +10,8 @@ class clientes extends Model
     //insert data
     protected $fillable = [
         'nombre',
-        'rfc'
+        'rfc',
+        'status'
     ];
     use HasFactory;
 }
