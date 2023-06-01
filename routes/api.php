@@ -32,11 +32,17 @@ Route::put('/eliminar/{id}', [cliente::class, 'hideClient']);
 Route::delete('/eliminar/{id}', [cliente::class, 'eliminateClient']);
 Route::post('/clientes', [cliente::class, 'createClient']);
 
+//Chofer routes
+Route::get('/choferes',[ChoferController::class,'getChofers']);
+Route::get('/chofer/{id}', [ChoferController::class, 'getChofer']);
+Route::get('/likeChofer', [ChoferController::class, 'lookForNameChofer']);
+
+
 Route::post('/tramites',[TramiteController::class, 'createTramite']);
 Route::get('/imprimirBarcode',[TramiteController::class, 'imprimirBarcode']);
 Route::get('/pedimentosa1',[PedimentoA1Controller::class,'getPedimentosA1']);
 Route::post('/pedimentosa1',[PedimentoA1Controller::class, 'createPedimentoA1']);
 Route::get('/pedimentosrt',[PedimentoRTController::class,'getPedimentosRT']);
 Route::post('/pedimentosrt', [PedimentoRTController::class, 'createPedimentoRT']);
-Route::get('/choferes',[ChoferController::class,'getChofers']);
+
 

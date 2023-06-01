@@ -31,7 +31,7 @@ class cliente extends Controller
         if($client != null){
             return response($client, 200);
         }
-        return response('Client not found', 404);
+        return response(['message' => "'Client not found'"], 404);
     }
 
     //search like query
@@ -40,7 +40,7 @@ class cliente extends Controller
         if($client != null){
             return response($client, 200);
         }
-        return response('Clients not found', 404);
+        return response(['message' => 'Clients not found'], 404);
     }
 
     //update a client
