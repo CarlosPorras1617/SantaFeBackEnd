@@ -34,6 +34,15 @@ class cliente extends Controller
         return response('Client not found', 404);
     }
 
+    //search like query
+    public function lookForName($input){
+        $client = clientes::where('nombre', 'like', '%'.$input.'%')->get();
+        if($client != null){
+            return response($client, 200);
+        }
+        return response('Clients not found', 404);
+    }
+
     //update a client
     public function updateClient($id, Request $request){
         $client = clientes::find($id);

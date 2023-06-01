@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //Clients routes
 Route::get('/clientes',[cliente::class,'getClients']);
 Route::get('/cliente/{id}', [cliente::class, 'getClient']);
+Route::get('/likeClientes/{input}', [cliente::class, 'lookForName']);
 Route::put('/cliente/{id}', [cliente::class, 'updateClient']);
 Route::put('/eliminar/{id}', [cliente::class, 'hideClient']);
 Route::delete('/eliminar/{id}', [cliente::class, 'eliminateClient']);
