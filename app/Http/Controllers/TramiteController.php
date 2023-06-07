@@ -42,7 +42,7 @@ class TramiteController extends Controller
         Tramite::create($data);
 
         //prepare the thermal printer
-        $connector = new WindowsPrintConnector("POS-58");
+        $connector = new WindowsPrintConnector("GTP582");
         $printer = new Printer($connector);
         $printer->selectPrintMode(Printer::MODE_DOUBLE_HEIGHT | Printer::MODE_DOUBLE_WIDTH);
 
@@ -64,6 +64,9 @@ class TramiteController extends Controller
         $printer->setBarcodeTextPosition(Printer::BARCODE_TEXT_BELOW);
         $printer->barcode($barcode, Printer::BARCODE_ITF);
         $printer->feed(4);
+
+        //cut the paper
+        $printer->cut();
 
         //close the printer
         $printer -> close();

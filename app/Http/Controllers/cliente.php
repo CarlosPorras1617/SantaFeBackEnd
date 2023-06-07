@@ -63,7 +63,7 @@ class cliente extends Controller
         $client = clientes::find($id);
         if (!$client) {
             return response([
-                'message' => 'Client with ID ' . $id . ' couldnt be found'
+                'message' => 'Client with ID ' . $id . ' could not be found'
             ], 404);
         }
         $client->status = 0;
@@ -84,7 +84,7 @@ class cliente extends Controller
         $client = clientes::find($id);
         if (!$client) {
             return response([
-                'message' => 'Client with ID ' . $id . ' couldnt be found'
+                'message' => 'Client with ID ' . $id . ' could not be found'
             ], 404);
         }
         $client->delete();

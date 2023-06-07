@@ -5,6 +5,7 @@ use App\Http\Controllers\cliente;
 use App\Http\Controllers\PedimentoA1Controller;
 use App\Http\Controllers\PedimentoRTController;
 use App\Http\Controllers\TramiteController;
+use App\Models\chofer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,9 +35,14 @@ Route::post('/clientes', [cliente::class, 'createClient']);
 
 //Chofer routes
 Route::get('/choferes',[ChoferController::class,'getChofers']);
+Route::get('/choferes/activos',[ChoferController::class,'getChofersActivos']);
+Route::get('/choferes/inactivos',[ChoferController::class,'getChofersInactivos']);
 Route::get('/chofer/{id}', [ChoferController::class, 'getChofer']);
 Route::get('/likeChofer', [ChoferController::class, 'lookForNameChofer']);
-
+Route::post('/chofer', [ChoferController::class, 'createChofer']);
+Route::put('chofer/{id}', [ChoferController::class, 'updateChofer']);
+Route::put('eliminar/{id}', [ChoferController::class, 'hideChofer']);
+Route::delete('/eliminar/{id}', [ChoferController::class, 'eliminateChofer']);
 
 Route::post('/tramites',[TramiteController::class, 'createTramite']);
 Route::get('/imprimirBarcode',[TramiteController::class, 'imprimirBarcode']);
