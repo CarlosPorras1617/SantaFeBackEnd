@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('pedimento_a1_s', function (Blueprint $table) {
             $noPedimento = 'El trámite es operación RT';
             $table->id();
-            $table->integer('semana');
+            $table->integer('semana')->unique();
             $table->integer('patente');
             $table->string('noPedimento')->nullable()->default($noPedimento);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
