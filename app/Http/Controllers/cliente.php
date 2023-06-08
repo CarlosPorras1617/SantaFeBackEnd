@@ -34,6 +34,18 @@ class cliente extends Controller
         return response(['message' => "'Client not found'"], 404);
     }
 
+    //get active chofers
+    public function getClientesActivos(){
+        $chofers = clientes::where('status', '=', 1)->paginate(20);
+        return response($chofers, 200);
+    }
+
+    //get inactive chofers
+    public function getClientesInactivos(){
+        $chofers = clientes::where('status', '=', 0)->paginate(20);
+        return response($chofers, 200);
+    }
+
     //search like query
     public function lookForName($input){
         $client = clientes::where('nombre', 'like', '%'.$input.'%')->get();

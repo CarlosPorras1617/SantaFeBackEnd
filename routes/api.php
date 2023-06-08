@@ -26,6 +26,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //Clients routes
 Route::get('/clientes',[cliente::class,'getClients']);
+Route::get('/clientes/activos',[cliente::class,'getClientesActivos']);
+Route::get('/clientes/inactivos',[cliente::class,'getClientesInactivos']);
 Route::get('/cliente/{id}', [cliente::class, 'getClient']);
 Route::get('/likeClientes/{input}', [cliente::class, 'lookForName']);
 Route::put('/cliente/{id}', [cliente::class, 'updateClient']);
