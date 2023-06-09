@@ -46,11 +46,18 @@ Route::put('/pedimentoa1/{id}', [PedimentoA1Controller::class, 'updatePedimentoA
 Route::put('/pedimentoa1/eliminar/{id}', [PedimentoA1Controller::class, 'hidePedimentoA1']);
 Route::delete('/pedimentoa1/eliminar/{id}', [PedimentoA1Controller::class, 'eliminatePedimentoA1']);
 
+//Pedimento Rt routes
+Route::get('/pedimentosrt',[PedimentoRTController::class,'getPedimentosRT']);
+Route::get('/pedimentosrt/activos',[PedimentoRTController::class, 'getPedimentosRTActivos']);
+Route::get('/pedimentosrt/inactivos',[PedimentoRTController::class, 'getPedimentosRTInactivos']);
+Route::get('/pedimentort/{id}', [PedimentoRTController::class, 'getPedimentoRT']);
+Route::get('/likePedimentort', [PedimentoRTController::class, 'lookForSemanaPedimentoRT']);
+Route::post('/pedimentort',[PedimentoRTController::class, 'createPedimentoRT']);
+Route::put('/pedimentort/{id}', [PedimentoRTController::class, 'updatePedimentoRT']);
+Route::put('/pedimentort/eliminar/{id}', [PedimentoRTController::class, 'hidePedimentoRT']);
+Route::delete('/pedimentort/eliminar/{id}', [PedimentoRTController::class, 'eliminatePedimentoRT']);
+
 Route::post('/tramites',[TramiteController::class, 'createTramite']);
 Route::get('/imprimirBarcode',[TramiteController::class, 'imprimirBarcode']);
-
-Route::post('/pedimentosa1',[PedimentoA1Controller::class, 'createPedimentoA1']);
-Route::get('/pedimentosrt',[PedimentoRTController::class,'getPedimentosRT']);
-Route::post('/pedimentosrt', [PedimentoRTController::class, 'createPedimentoRT']);
 
 

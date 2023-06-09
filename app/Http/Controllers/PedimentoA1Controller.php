@@ -11,10 +11,11 @@ class PedimentoA1Controller extends Controller
     //create pedimentoA1
     public function createPedimentoA1(Request $request){
         $data = $request->all();
-        $data['noPedimento'] = filled($data['noPedimento']) ? $data['noPedimento'] : 'El trámite es operación RT';
+        //$data['noPedimento'] = filled($data['noPedimento']) ? $data['noPedimento'] : 'El trámite es operación RT';
         $rules = [
-            'semana' => 'required',
-            'patente' => 'required'
+            'semana' => 'required|numeric|min:1',
+            'patente' => 'required|numeric|digits:4',
+            'noPedimento' => 'required|numeric|digits:7'
         ];
         $validation = $this->validatePedimento($data, $rules);
         if ($validation['error']) {
@@ -47,14 +48,14 @@ class PedimentoA1Controller extends Controller
 
     //Get pedimentos A1 activos
     public function getPedimentosA1Activos(){
-        $chofers = PedimentoA1::where('status', '=', 1)->paginate(20);
-        return response($chofers, 200);
+        $pedimentosA1 = PedimentoA1::where('status', '=', 1)->paginate(20);
+        return response($pedimentosA1, 200);
     }
 
     //get inactive perdimentos A1
     public function getPedimentosA1Inactivos(){
-        $chofers = PedimentoA1::where('status', '=', 0)->paginate(20);
-        return response($chofers, 200);
+        $pedimentosA1 = PedimentoA1::where('status', '=', 0)->paginate(20);
+        return response($pedimentosA1, 200);
     }
 
     //get for semana
@@ -73,10 +74,11 @@ class PedimentoA1Controller extends Controller
     public function updatePedimentoA1($id, Request $request){
         $pedimentoA1 = PedimentoA1::find($id);
         $data = $request->all();
-        $data['noPedimento'] = filled($data['noPedimento']) ? $data['noPedimento'] : 'El trámite es operación RT';
+        //$data['noPedimento'] = filled($data['noPedimento']) ? $data['noPedimento'] : 'El trámite es operación RT';
         $rules = [
-            'semana' => 'required',
-            'patente' => 'required'
+            'semana' => 'required|numeric|min:1',
+            'patente' => 'required|numeric|digits:4',
+            'noPedimento' => 'required|numeric|digits:7'
         ];
         $validation = $this->validatePedimento($data, $rules);
         if ($validation['error']) {

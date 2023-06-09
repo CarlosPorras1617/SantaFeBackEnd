@@ -19,7 +19,7 @@ class PedimentoRTFactory extends Factory
         return [
             'semana'=>fake()->numberBetween(1,54),
             'patente'=>fake()->numberBetween(1000,9000),
-            'noPedimento'=>fake()->text(16),
+            'noPedimento'=>fake()->numberBetween(1000000,9000000),
         ];
     }
 }

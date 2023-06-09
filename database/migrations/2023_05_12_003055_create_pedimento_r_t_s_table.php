@@ -13,11 +13,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pedimento_r_t_s', function (Blueprint $table) {
-            $noPedimento = 'El trámite es operación A1';
             $table->id();
             $table->integer('semana');
             $table->integer('patente');
-            $table->string('noPedimento')->nullable()->default($noPedimento);
+            $table->integer('noPedimento');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
