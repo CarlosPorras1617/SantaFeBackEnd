@@ -14,11 +14,15 @@ return new class extends Migration
         Schema::create('tramites', function (Blueprint $table) {
             $table->id();
             $table->string('factura');
+            $table->integer('pedimentoRT');
+            $table->integer('pedimentoA1');
+            $table->string('cliente');
+            $table->string('chofer');
             $table->string('placa');
             $table->string('economico');
             $table->string('candados');
             $table->integer('numBultos');
-            $table->integer('numEntrada');
+            $table->bigInteger('numEntrada');
             $table->integer('status')->default(1);
             $table->bigInteger('barcode');
             $table->timestamps();

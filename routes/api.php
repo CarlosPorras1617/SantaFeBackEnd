@@ -5,6 +5,7 @@ use App\Http\Controllers\cliente;
 use App\Http\Controllers\PedimentoA1Controller;
 use App\Http\Controllers\PedimentoRTController;
 use App\Http\Controllers\TramiteController;
+use App\Models\Tramite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -57,7 +58,15 @@ Route::put('/pedimentort/{id}', [PedimentoRTController::class, 'updatePedimentoR
 Route::put('/pedimentort/eliminar/{id}', [PedimentoRTController::class, 'hidePedimentoRT']);
 Route::delete('/pedimentort/eliminar/{id}', [PedimentoRTController::class, 'eliminatePedimentoRT']);
 
+//Tramites routes
+Route::get('/tramites',[TramiteController::class,'getTramites']);
+Route::get('/tramites/activos',[TramiteController::class, 'getTramitesActivos']);
+Route::get('/tramites/inactivos',[TramiteController::class, 'getTramitesInactivos']);
+Route::get('/tramite/{id}', [TramiteController::class, 'getTramite']);
+Route::get('/likeTramite', [TramiteController::class, 'lookForNumeroEntrada']);
 Route::post('/tramites',[TramiteController::class, 'createTramite']);
-Route::get('/imprimirBarcode',[TramiteController::class, 'imprimirBarcode']);
+Route::put('/tramite/{id}', [TramiteController::class, 'updateTramite']);
+Route::put('/tramite/eliminar/{id}', [TramiteController::class, 'hideTramite']);
+Route::delete('/tramite/eliminar/{id}', [TramiteController::class, 'eliminateTramite']);
 
 
