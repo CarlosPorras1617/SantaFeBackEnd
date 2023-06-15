@@ -60,6 +60,7 @@ Route::delete('/pedimentort/eliminar/{id}', [PedimentoRTController::class, 'elim
 
 //Tramites routes
 Route::get('/tramites',[TramiteController::class,'getTramites']);
+Route::get('/tramites/imprimircodigo/{id}',[TramiteController::class,'imprimirCodigo']);
 Route::get('/tramites/activos',[TramiteController::class, 'getTramitesActivos']);
 Route::get('/tramites/inactivos',[TramiteController::class, 'getTramitesInactivos']);
 Route::get('/tramite/{id}', [TramiteController::class, 'getTramite']);
