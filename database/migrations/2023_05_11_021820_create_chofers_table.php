@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('chofers', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('apellidoPaterno');
-            $table->string('apellidoMaterno')->nullable();
+            //$table->string('apellidoPaterno');
+            //$table->string('apellidoMaterno')->nullable();
             $table->date('fechaNacimiento')->nullable();
-            $table->string('numCelular')->nullable();
+            $table->bigInteger('numCelular')->nullable();
             $table->string('noLicencia');
             $table->string('noVisa')->nullable();
             $table->integer('status')->default(1);

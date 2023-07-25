@@ -11,13 +11,13 @@ class ChoferController extends Controller
     //create chofer
     public function createChofer(Request $request){
         $data = $request->all();
-        $data['apellidoMaterno'] = filled($data['apellidoMaterno']) ? $data['apellidoMaterno'] : 'NA';
+        //$data['apellidoMaterno'] = filled($data['apellidoMaterno']) ? $data['apellidoMaterno'] : 'NA';
         $data['fechaNacimiento'] = filled($data['fechaNacimiento']) ? $data['fechaNacimiento'] : '1900/01/01';
-        $data['numCelular'] = filled($data['numCelular']) ? $data['numCelular'] : 'NA';
+        $data['numCelular'] = filled($data['numCelular']) ? $data['numCelular'] : 0;
         $data['noVisa'] = filled($data['noVisa']) ? $data['noVisa'] : 'NA';
         $rules = [
             'nombre'=>'required',
-            'apellidoPaterno'=>'required',
+            //'apellidoPaterno'=>'required',
             'noLicencia'=>'required'
         ];
         $validation = $this->validateChofer($data, $rules);
@@ -37,13 +37,13 @@ class ChoferController extends Controller
     //get all chofer
     public function getChofers(){
         $chofers = chofer::all();
-        $chofers = chofer::paginate(20);
+        //$chofers = chofer::paginate(20);
         return response($chofers, 200);
     }
 
     //get active chofers
     public function getChofersActivos(){
-        $chofers = chofer::where('status', '=', 1)->paginate(20);
+        $chofers = chofer::where('status', '=', 1)->paginate(10);
         return response($chofers, 200);
     }
 
@@ -57,14 +57,14 @@ class ChoferController extends Controller
     public function updateChofer($id, Request $request){
         $chofer = chofer::find($id);
         $data = $request->all();
-        $data['apellidoMaterno'] = filled($data['apellidoMaterno']) ? $data['apellidoMaterno'] : 'NA';
+        //$data['apellidoMaterno'] = filled($data['apellidoMaterno']) ? $data['apellidoMaterno'] : 'NA';
         $data['fechaNacimiento'] = filled($data['fechaNacimiento']) ? $data['fechaNacimiento'] : '1900/01/01';
-        $data['numCelular'] = filled($data['numCelular']) ? $data['numCelular'] : 'NA';
+        $data['numCelular'] = filled($data['numCelular']) ? $data['numCelular'] : '0';
         $data['noVisa'] = filled($data['noVisa']) ? $data['noVisa'] : 'NA';
 
         $rules = [
             'nombre'=>'required',
-            'apellidoPaterno'=>'required',
+            //'apellidoPaterno'=>'required',
             'noLicencia'=>'required'
         ];
 
@@ -96,19 +96,19 @@ class ChoferController extends Controller
     public function lookForNameChofer(Request $request){
         try {
             $nombre = $request->input('nombre');
-            $apellidoPaterno = $request->input('apellidoPaterno');
-            $apellidoMaterno = $request->input('apellidoMaterno');
+            //$apellidoPaterno = $request->input('apellidoPaterno');
+            //$apellidoMaterno = $request->input('apellidoMaterno');
             $chofer = Chofer::where('nombre', 'like', '%' . $nombre . '%');
 
-            if ($apellidoPaterno) {
+            /*if ($apellidoPaterno) {
                 $chofer->where('apellidoPaterno', 'like', '%' . $apellidoPaterno . '%');
             }
 
             if ($apellidoMaterno) {
                 $chofer->where('apellidoMaterno', 'like', '%' . $apellidoMaterno . '%');
-            }
+            }*/
 
-            $choferes = $chofer->get();
+            $choferes = $chofer->paginate(10);
 
             return response($choferes, 200);
         } catch (\Exception $e) {

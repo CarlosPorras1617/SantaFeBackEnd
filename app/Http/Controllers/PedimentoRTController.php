@@ -48,7 +48,7 @@ class PedimentoRTController extends Controller
 
     //Get pedimentos RT activos
     public function getPedimentosRTActivos(){
-        $pedimentosRT = PedimentoRT::where('status', '=', 1)->paginate(20);
+        $pedimentosRT = PedimentoRT::where('status', '=', 1)->paginate(10);
         return response($pedimentosRT, 200);
     }
 

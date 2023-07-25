@@ -10,8 +10,8 @@ class chofer extends Model
     //insert data
     protected $fillable = [
         'nombre',
-        'apellidoPaterno',
-        'apellidoMaterno',
+        //'apellidoPaterno',
+        //'apellidoMaterno',
         'fechaNacimiento',
         'numCelular',
         'noLicencia',

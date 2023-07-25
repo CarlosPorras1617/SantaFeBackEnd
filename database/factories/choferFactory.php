@@ -18,10 +18,10 @@ class choferFactory extends Factory
     {
         return [
             'nombre'=>fake()->name(),
-            'apellidoPaterno'=>fake()->lastName(),
-            'apellidoMaterno'=>fake()->lastName(),
+            //'apellidoPaterno'=>fake()->lastName(),
+            //'apellidoMaterno'=>fake()->lastName(),
             'fechaNacimiento'=>fake()->date(),
-            'numCelular'=>fake()->phoneNumber(),
+            'numCelular'=>fake()->randomNumber(),
             'noLicencia'=>fake()->text(50),
             'noVisa'=>fake()->text(50)
         ];

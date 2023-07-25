@@ -63,11 +63,15 @@ Route::get('/tramites',[TramiteController::class,'getTramites']);
 Route::get('/tramites/imprimircodigo/{id}',[TramiteController::class,'imprimirCodigo']);
 Route::get('/tramites/activos',[TramiteController::class, 'getTramitesActivos']);
 Route::get('/tramites/inactivos',[TramiteController::class, 'getTramitesInactivos']);
+Route::get('/tramites/todosActivos',[TramiteController::class, 'getActiveAllTramites']);
+Route::get('/tramites/todosInactivos',[TramiteController::class, 'getInactiveAllTramites']);
 Route::get('/tramite/{id}', [TramiteController::class, 'getTramite']);
 Route::get('/likeTramite', [TramiteController::class, 'lookForNumeroEntrada']);
 Route::post('/tramites',[TramiteController::class, 'createTramite']);
 Route::put('/tramite/{id}', [TramiteController::class, 'updateTramite']);
 Route::put('/tramite/eliminar/{id}', [TramiteController::class, 'hideTramite']);
 Route::delete('/tramite/eliminar/{id}', [TramiteController::class, 'eliminateTramite']);
+Route::put('/tramite/capturar/{barcode}', [TramiteController::class, 'capturarTramite']);
+Route::get('/tramite/numEntrada/{numEntrada}', [TramiteController::class, 'obtenerNumEntradaOnly']);
 
 

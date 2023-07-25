@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('pedimentoA1');
             $table->string('cliente');
             $table->string('chofer');
+            $table->bigInteger('cellChofer')->nullable();
+            $table->string('noLicenciaChofer');
             $table->string('placa');
             $table->string('economico');
             $table->string('candados');

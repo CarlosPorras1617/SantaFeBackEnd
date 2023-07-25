@@ -48,13 +48,13 @@ class PedimentoA1Controller extends Controller
 
     //Get pedimentos A1 activos
     public function getPedimentosA1Activos(){
-        $pedimentosA1 = PedimentoA1::where('status', '=', 1)->paginate(20);
+        $pedimentosA1 = PedimentoA1::where('status', '=', 1)->paginate(10);
         return response($pedimentosA1, 200);
     }
 
     //get inactive perdimentos A1
     public function getPedimentosA1Inactivos(){
-        $pedimentosA1 = PedimentoA1::where('status', '=', 0)->paginate(20);
+        $pedimentosA1 = PedimentoA1::where('status', '=', 0)->paginate(10);
         return response($pedimentosA1, 200);
     }
 
@@ -63,7 +63,7 @@ class PedimentoA1Controller extends Controller
         try {
             $semana = $request->input('semana');
             $pedimentosA1 = PedimentoA1::where('semana', 'like', '%' . $semana . '%');
-            $pedimentos = $pedimentosA1->orderBy('semana','desc')->get();
+            $pedimentos = $pedimentosA1->orderBy('semana','desc')->paginate(10);
             return response($pedimentos, 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);

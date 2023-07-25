@@ -21,7 +21,7 @@ class cliente extends Controller
     //get all clients
     public function getClients(){
         $clients = clientes::all();
-        $clients = clientes::paginate(10);
+        //$clients = clientes::paginate(10);
         return response($clients, 200);
     }
 
@@ -36,19 +36,19 @@ class cliente extends Controller
 
     //get active chofers
     public function getClientesActivos(){
-        $clientes = clientes::where('status', '=', 1)->paginate(20);
+        $clientes = clientes::where('status', '=', 1)->paginate(10);
         return response($clientes, 200);
     }
 
     //get inactive chofers
     public function getClientesInactivos(){
-        $clientes = clientes::where('status', '=', 0)->paginate(20);
+        $clientes = clientes::where('status', '=', 0)->paginate(10);
         return response($clientes, 200);
     }
 
     //search like query
     public function lookForName($input){
-        $client = clientes::where('nombre', 'like', '%'.$input.'%')->get();
+        $client = clientes::where('nombre', 'like', '%'.$input.'%')->paginate(10);
         if($client != null){
             return response($client, 200);
         }

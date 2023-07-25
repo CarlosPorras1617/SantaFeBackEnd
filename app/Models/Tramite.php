@@ -10,6 +10,8 @@ class Tramite extends Model
     protected $fillable = [
             'factura',
             'chofer',
+            'cellChofer',
+            'noLicenciaChofer',
             'cliente',
             'pedimentoRT',
             'pedimentoA1',
